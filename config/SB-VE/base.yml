@@ -1,0 +1,40 @@
+inherit: "../dataset.yml"
+
+# Shared SB-VE model, optimization, sampling, and runtime defaults.
+model:
+  backbone: "ncsnpp_base"
+  backbone_kwargs: {}
+
+formulation:
+  name: "SBVE"
+  kwargs:
+    time_loss_weight: 1.0e-3
+  training_target: "data"
+  sampling:
+    num_steps: 4
+    skip_type: "time_uniform"
+    t_min: 1.0e-4
+    t_max: 1.0
+
+optimization:
+  optimizer: "Adam"
+  learning_rate: 1.0e-4
+  batch_size: 8
+  reduction: "sum"
+  ema: True
+  ema_rate: 0.999
+  seed: 1234
+  gradient_checkpointing: False
+  gradient_clip_val: 0.0
+
+runtime:
+  logger: "wandb"
+  wandb_project: "CoF"
+  num_nodes: 1
+  valid_metric_samples: 50
+  save_state_steps: 1000
+  checkpoints_total_limit: 3
+
+evaluation:
+  metrics: [pesq, si_sdr]
+  selection_metric: PESQ

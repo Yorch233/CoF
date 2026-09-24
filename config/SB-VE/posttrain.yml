@@ -1,0 +1,23 @@
+inherit: "base.yml"
+
+# Stage-specific corrective forcing post-training defaults.
+stage: "post_training"
+posttrain:
+  method: "cof"
+  max_steps: 4000
+  validation_every_n_steps: 200
+  cof:
+    objective:
+      si_sdr_weight: 0.01
+      magnitude_weight: 0.7
+      complex_weight: 0.3
+    drc:
+      rollout:
+        n_max: 16
+        fixed_n: null
+    ctc:
+      lambda: 0.1
+      steps: 1        # Stale configuration, do not modify.
+      cf_model: "ema" # Stale configuration, do not modify.
+      fa_model: "ema" # Stale configuration, do not modify.
+      shared_noise: true

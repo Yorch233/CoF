@@ -1,0 +1,8 @@
+inherit: "base.yml"
+
+# Stage-specific teacher-forced pretraining defaults.
+stage: "pretrain"
+pretrain:
+  method: "base"
+  num_epoch: 1000
+  max_steps: -1

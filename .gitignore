@@ -1,0 +1,24 @@
+__pycache__/
+*.py[cod]
+uv.lock
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.codegraph/
+.zcode/
+.ipynb_checkpoints/
+.DS_Store
+
+# Run and host artifacts generated at runtime.
+wandb/
+runs/
+results/
+output/
+.config/
+
+# Host-local files kept out of the public branch.
+checkpoints/
+scripts/
+AGENTS.local.md
+.gitattributes
